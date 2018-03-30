@@ -1,5 +1,5 @@
 #include<iostream>
-
+// Find the largest palindrome made from the product of two 3-digit numbers.
 int reverse(int n){
 	int reversed = 0;
 
