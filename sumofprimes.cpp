@@ -3,7 +3,7 @@
 #include <vector>
 
 // Find the sum of all the primes below two million.	
-
+// Needs the implementation of the sieve of erathostenes
 using std::vector;
 
 
