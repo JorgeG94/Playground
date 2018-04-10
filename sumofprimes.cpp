@@ -1,47 +1,48 @@
 #include <iostream>
-#include <cmath>
 #include <vector>
+using namespace std;
 
-// Find the sum of all the primes below two million.	
-// Needs the implementation of the sieve of erathostenes
-using std::vector;
+// Find the sum of all the primes below two million.    
+// Done using the sieve of Eratosthenes
 
+ 
+void SieveOfEratosthenes(int n)
+{
+    bool prime[n+1];
+    memset(prime, true, sizeof(prime));
+    vector<int> result;
+    unsigned long val;
+    for (int p=2; p*p<=n; p++)
+    {
+        // If prime[p] is not changed, then it is a prime
+        if (prime[p] == true)
+        {
+            // Update all multiples of p
+            for (int i=p*2; i<=n; i += p)
+                prime[i] = false;
+        }
+    }
+ 
+    // Print all prime numbers
+    for (int p=2; p<=n; p++)
 
-bool isprime(int n){
+       if (prime[p]){
+          result.push_back(p); //store them
+      }           
 
-	bool prime = true;
+      for (int i=0; i<=result.size();i++){
+        val += result[i]; // sum them 
+      }
+      cout << val << endl; //boom
 
-	for(int r=2; r<=n/2;r++){
-		if (n%r == 0){
-			prime = false;
-			break;
-		}
-	}
-	return prime;	
 }
+ 
+int main()
+{
+    int n = 2000000;
+    int res=0;
 
-int main(){
-	int dum = 0;
-	bool is = true;
-	int nmax = 2000000;
-	vector<int> result;
-	unsigned valor = 0;
+    SieveOfEratosthenes(n);
 
-	for(int n=2;n<=nmax;n++){
-
-		is = isprime(n);
-
-		if (is){ 
-		std::cout << n << std::endl;
-		result.push_back(n);
-
-		}
-	}
-			unsigned size = result.size();
-			//std::cout << size << std::endl;
-			for(int i=0; i < size; i++){
-				valor += result[i];
-			}
-			std::cout << valor << std::endl;
-return 0;
+    return 0;
 }
