@@ -4,7 +4,9 @@
 using namespace std; 
 
 int main(){
-	int x = 13;
+	int x = 50;
+	int size;
+	int maxsize = 0;
 	vector<int> coll;
 	while(x>=1){
 		//cout << x << endl;
@@ -20,11 +22,16 @@ int main(){
 			}
 		//	cout << tmp << endl;
 		}
-		cout << coll.size() << endl;
+		//cout << coll.size() << endl;
+		size = coll.size();
+		if(maxsize <= size){
+			maxsize = size;
+		}
 		coll.clear();
 		x--;
 	}
 
-
+	cout << maxsize << endl;
 	return 0;
 }
+
